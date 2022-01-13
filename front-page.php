@@ -20,14 +20,13 @@ get_header();
     <li>Curated free video lessons</li>
     <li>Drumless tracks to play along to</li>
     <li>Sheet music for drums</li>
-    <li></li>
 </ul>
 
 <h2>Leon's drum study notes</h2>
 
 <p>I'm keeping track of my own progres and recording study notes here.</p>
 
-<?php accessible_minimalism_display_latest_blog_posts(); ?>
+<?php // accessible_minimalism_display_latest_blog_posts(); ?>
 
 <?php get_footer(); ?>
 
