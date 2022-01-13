@@ -9,18 +9,23 @@ get_header();
 
 ?>
 
-<p><b>Welcome to my site!</b></p>
+<p><b>Drum Study Resources</b></p>
 
-<p>I created this site for a few reasons:</p>
+<p>For the lifetime learner.</p>
+
+<p>Drum Study offers a curated list of quality drumming resources.</p>
 
 <ul>
-    <li> to force me to learn in public for extra pressure/motivation</li>
-    <li> to help others with learning resources and to see my embarrassing struggle hopefully bear fruit with persistence</li>
-    <li> to get more familiar with Strattic's awesome static WordPress publishing system, as a user, not just a developer/employee</li>
-    <li> to see me fork my <a href="https://github.com/leonstafford/accessible-minimalism-hugo-theme">Accessible Minimalism Hugo Theme</a> to WordPress</li>
+    <li>Professional Drum Teaching Websites</li>
+    <li>Curated free video lessons</li>
+    <li>Drumless tracks to play along to</li>
+    <li>Sheet music for drums</li>
+    <li></li>
 </ul>
 
-<h2>My latest Hebrew &amp; Arabic study notes</h2>
+<h2>Leon's drum study notes</h2>
+
+<p>I'm keeping track of my own progres and recording study notes here.</p>
 
 <?php accessible_minimalism_display_latest_blog_posts(); ?>
 
