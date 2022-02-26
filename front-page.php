@@ -22,11 +22,28 @@ get_header();
     <li>Sheet music for drums</li>
 </ul>
 
-<h2>Leon's drum study notes</h2>
+<h2>Online Drum Lesson Providers</h2>
 
-<p>I'm keeping track of my own progres and recording study notes here.</p>
+<?php
 
-<?php // accessible_minimalism_display_latest_blog_posts(); ?>
+$allPostsWPQuery = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1));
+ 
+if ( $allPostsWPQuery->have_posts() ) : ?>
+ 
+<ul>
+     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+        <pre>
+        <?php print_r(get_post_custom($post_id)); ?>
+        </pre>
+
+    <?php endwhile; ?>
+</ul>
+
+<?php wp_reset_postdata(); ?>
+
+<?php endif; ?>
 
 <?php get_footer(); ?>
 
