@@ -42,7 +42,10 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
         foreach($customFields as $key => $value): ?>
 
-            <li><b> <?php echo $key; ?> </b> <?php echo $value; ?></li>
+            <?php if (in_array(['_edit_lock', '_edit_last'], $key) continue; ?>
+
+
+            <li><b> <?php echo $key; ?> </b> <?php echo print_r($value); ?></li>
 
         <?php endforeach; ?>
 
