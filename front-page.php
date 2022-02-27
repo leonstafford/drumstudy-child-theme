@@ -34,9 +34,19 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
      <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
-        <pre>
-        <?php print_r(get_post_custom($post_id)); ?>
-        </pre>
+        <ul>
+
+        <?php
+
+        $customFields = get_post_custom();
+
+        foreach($custom as $key => $value): ?>
+
+            <li><b> <?php echo $key; ?> </b> <?php echo $value; ?></li>
+
+        <?php endforeach; ?>
+
+        </ul>
 
     <?php endwhile; ?>
 </ul>
