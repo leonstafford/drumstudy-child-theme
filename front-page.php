@@ -40,7 +40,7 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
         $customFields = get_post_custom();
 
-        foreach($custom as $key => $value): ?>
+        foreach($customFields as $key => $value): ?>
 
             <li><b> <?php echo $key; ?> </b> <?php echo $value; ?></li>
 
