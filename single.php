@@ -7,63 +7,38 @@
 
 get_header();
 
-$category = get_queried_object();
+// Load posts loop.
+while ( have_posts() ) {
+    the_post();
 
-echo get_cat_name( $category->term_id );
+    the_title('<h2>', '</h2>');
 
-echo "SINGLE POST";
+    ?>
 
-if ( have_posts() ) {
-?>
+    <ul>
 
-<?php
+    <?php
 
-    // Load posts loop.
-    while ( have_posts() ) {
-        the_post();
+    $customFields = get_post_custom();
 
-        the_title('<h2>', '</h2>');
+    foreach($customFields as $key => $value): ?>
 
-        ?>
-
-        <p><i>published by <?php the_author(); ?> on <?php echo get_the_date(); ?></i></p>
-       
-        <?php 
-          
- 
-        the_content();
+        <?php if (in_array($key, ['_edit_lock', '_edit_last'])) continue; ?>
 
 
-        global $post;
+        <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
 
-        if( has_category( 'resources', $post ) ) {
+    <?php 
+    
+    endforeach;  
 
-            echo '<b>Resource meta</b>';
+    ?>
 
-            $fields = get_fields();
+    </ul>
 
-            if( $fields ): ?>
+    <?php 
 
-                <ul>
-                    <?php foreach( $fields as $name => $value ): ?>
-                        <li><b><?php echo $name; ?></b> <?php echo $value; ?></li>
-                    <?php endforeach; ?>
-                </ul>
-
-            <?php endif;
-
-        }
-
-    } // end posts loop
-?>
-
-<?php
-} else {
-
-        echo "<h2>No content found</h2>";
- 
-        echo "<p>Put something here</p>";
-        
+    the_content();
 
 }
 
