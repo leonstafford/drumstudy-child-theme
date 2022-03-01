@@ -23,7 +23,7 @@ while ( have_posts() ) {
 
     foreach($customFields as $key => $value): ?>
 
-        <?php if (in_array($key, ['_edit_lock', '_edit_last'])) continue; ?>
+        <?php if ( $key[0] === '_' ) continue; ?>
 
 
         <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
