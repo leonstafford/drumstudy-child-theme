@@ -9,14 +9,17 @@ get_header();
 
 ?>
 
-<p><b>Drum Study Resources</b></p>
-
-<p>For the lifetime learner.</p>
+<p><b>Resources for the lifetime learner.</b></p>
 
 <p>Drum Study offers a curated list of quality drumming resources.</p>
 
 <ul>
     <li>Professional Drum Teaching Websites</li>
+    <li>Drum Games</li>
+</ul>
+
+<i>Coming soon</i>
+<ul>
     <li>Curated free video lessons</li>
     <li>Drumless tracks to play along to</li>
     <li>Sheet music for drums</li>
@@ -49,8 +52,7 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
         foreach($customFields as $key => $value): ?>
 
-            <?php if (in_array($key, ['_edit_lock', '_edit_last'])) continue; ?>
-
+            <?php if ( $key[0] === '_' ) continue; ?>
 
             <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
 
@@ -92,8 +94,7 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
         foreach($customFields as $key => $value): ?>
 
-            <?php if (in_array($key, ['_edit_lock', '_edit_last'])) continue; ?>
-
+            <?php if ( $key[0] === '_' ) continue; ?>
 
             <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
 
