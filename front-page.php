@@ -17,13 +17,7 @@ get_header();
     <li>Professional Drum Teaching Websites</li>
     <li>Drum Software/Games</li>
     <li>Positive Vibes Drum Stories</li>
-</ul>
-
-<i>Coming soon</i>
-<ul>
-    <li>Curated free video lessons</li>
-    <li>Drumless tracks to play along to</li>
-    <li>Sheet music for drums</li>
+    <li>Drummer Assistance</li>
 </ul>
 
 <h2>Online Drum Lesson Providers</h2>
@@ -120,6 +114,32 @@ $allPostsWPQuery = new WP_Query(
         'post_status'=> 'publish',
         'posts_per_page'=> -1,
         'category_name'=> 'positive-vibes',
+
+    ]);
+ 
+if ( $allPostsWPQuery->have_posts() ) : ?>
+ 
+<ul>
+     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+    <?php endwhile; ?>
+</ul>
+
+<?php wp_reset_postdata(); ?>
+
+<?php endif; ?>
+
+<h2>Drummer Assistance</h2>
+
+<?php
+
+$allPostsWPQuery = new WP_Query(
+    [
+        'post_type'=> 'post',
+        'post_status'=> 'publish',
+        'posts_per_page'=> -1,
+        'category_name'=> 'drummer-assistance',
 
     ]);
  
