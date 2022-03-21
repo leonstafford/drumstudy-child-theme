@@ -37,6 +37,17 @@ $drumSoftwareWPQuery = new WP_Query(
 
     ]);
 
+$drumPodcastsWPQuery = new WP_Query(
+    [
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'post_type'=> 'post',
+        'post_status'=> 'publish',
+        'posts_per_page'=> -1,
+        'category_name'=> 'drum-podcasts',
+
+    ]);
+
 $positiveVibesWPQuery = new WP_Query(
     [
         'order' => 'ASC',
@@ -64,6 +75,7 @@ $assistanceWPQuery = new WP_Query(
 <ul>
     <li><?php echo $onlineDrumLessonsWPQuery->post_count;?> <a href="/category/online-drum-lessons/">Professional Drum Teaching Websites</a></li>
     <li><?php echo $drumSoftwareWPQuery->post_count;?> <a href="/category/drum-games/">Drum Software &amp; Games</a></li>
+    <li><?php echo $drumPodcastsWPQuery->post_count;?> <a href="/category/drum-podcasts/">Drum Podcasts</a></li>
     <li><?php echo $positiveVibesWPQuery->post_count;?> <a href="/category/positive-vibes/">Positive Vibes Drum Stories</a></li>
     <li><?php echo $assistanceWPQuery->post_count;?> <a href="/category/drummer-assistance/">Drummer Support Opportunities</a></li>
 </ul>
@@ -77,23 +89,8 @@ if ( $onlineDrumLessonsWPQuery->have_posts() ) : ?>
  
 <ul>
      <?php while ( $onlineDrumLessonsWPQuery->have_posts() ) : $onlineDrumLessonsWPQuery->the_post(); ?>
+
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-
-        <ul>
-
-        <?php
-
-        $customFields = get_post_custom();
-
-        foreach($customFields as $key => $value): ?>
-
-            <?php if ( $key[0] === '_' ) continue; ?>
-
-            <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
-
-        <?php endforeach; ?>
-
-        </ul>
 
     <?php endwhile; ?>
 </ul>
@@ -104,30 +101,32 @@ if ( $onlineDrumLessonsWPQuery->have_posts() ) : ?>
 
 <h2>Drum Software/Games</h2>
 
-
 <?php
  
 if ( $drumSoftwareWPQuery->have_posts() ) : ?>
  
 <ul>
      <?php while ( $drumSoftwareWPQuery->have_posts() ) : $drumSoftwareWPQuery->the_post(); ?>
+
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
-        <ul>
+    <?php endwhile; ?>
+</ul>
 
-        <?php
+<?php wp_reset_postdata(); ?>
 
-        $customFields = get_post_custom();
+<?php endif; ?>
 
-        foreach($customFields as $key => $value): ?>
+<h2>Drum Podcasts</h2>
 
-            <?php if ( $key[0] === '_' ) continue; ?>
+<?php
+ 
+if ( $drumPodcastsWPQuery->have_posts() ) : ?>
+ 
+<ul>
+     <?php while ( $drumPodcastsWPQuery->have_posts() ) : $drumPodcastsWPQuery->the_post(); ?>
 
-            <li><b> <?php echo $key; ?> </b> <?php echo $value[0]; ?></li>
-
-        <?php endforeach; ?>
-
-        </ul>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php endwhile; ?>
 </ul>
@@ -144,6 +143,7 @@ if ( $positiveVibesWPQuery->have_posts() ) : ?>
  
 <ul>
      <?php while ( $positiveVibesWPQuery->have_posts() ) : $positiveVibesWPQuery->the_post(); ?>
+
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php endwhile; ?>
