@@ -26,6 +26,8 @@ get_header();
 
 $allPostsWPQuery = new WP_Query(
     [
+        'order' => 'ASC',
+        'orderby' => 'title',
         'post_type'=> 'post',
         'post_status'=> 'publish',
         'posts_per_page'=> -1,
@@ -68,6 +70,8 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
 $allPostsWPQuery = new WP_Query(
     [
+        'order' => 'ASC',
+        'orderby' => 'title',
         'post_type'=> 'post',
         'post_status'=> 'publish',
         'posts_per_page'=> -1,
@@ -110,6 +114,8 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
 $allPostsWPQuery = new WP_Query(
     [
+        'order' => 'ASC',
+        'orderby' => 'title',
         'post_type'=> 'post',
         'post_status'=> 'publish',
         'posts_per_page'=> -1,
@@ -136,6 +142,8 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
 $allPostsWPQuery = new WP_Query(
     [
+        'order' => 'ASC',
+        'orderby' => 'title',
         'post_type'=> 'post',
         'post_status'=> 'publish',
         'posts_per_page'=> -1,
