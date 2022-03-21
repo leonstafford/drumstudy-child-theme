@@ -13,18 +13,9 @@ get_header();
 
 <p>Drum Study offers a curated list of quality drumming resources.</p>
 
-<ul>
-    <li>Professional Drum Teaching Websites</li>
-    <li>Drum Software/Games</li>
-    <li>Positive Vibes Drum Stories</li>
-    <li>Drummer Assistance</li>
-</ul>
-
-<h2>Online Drum Lesson Providers</h2>
-
 <?php
 
-$allPostsWPQuery = new WP_Query(
+$onlineDrumLessonsWPQuery = new WP_Query(
     [
         'order' => 'ASC',
         'orderby' => 'title',
@@ -34,11 +25,58 @@ $allPostsWPQuery = new WP_Query(
         'category_name'=> 'online-drum-lessons',
 
     ]);
+
+$drumSoftwareWPQuery = new WP_Query(
+    [
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'post_type'=> 'post',
+        'post_status'=> 'publish',
+        'posts_per_page'=> -1,
+        'category_name'=> 'drum-games',
+
+    ]);
+
+$positiveVibesWPQuery = new WP_Query(
+    [
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'post_type'=> 'post',
+        'post_status'=> 'publish',
+        'posts_per_page'=> -1,
+        'category_name'=> 'positive-vibes',
+
+    ]);
+
+$assistanceWPQuery = new WP_Query(
+    [
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'post_type'=> 'post',
+        'post_status'=> 'publish',
+        'posts_per_page'=> -1,
+        'category_name'=> 'drummer-assistance',
+
+    ]);
+
+?>
+
+<ul>
+    <li><?php echo $onlineDrumLessonsWPQuery->post_count;?> <a href="/category/online-drum-lessons/">Professional Drum Teaching Websites</a></li>
+    <li><?php echo $drumSoftwareWPQuery->post_count;?> <a href="/category/drum-games/">Drum Software &amp; Games</a></li>
+    <li><?php echo $positiveVibesWPQuery->post_count;?> <a href="/category/positive-vibes/">Positive Vibes Drum Stories</a></li>
+    <li><?php echo $assistanceWPQuery->post_count;?> <a href="/category/drummer-assistance/">Drummer Support Opportunities</a></li>
+</ul>
+
+<h2>Online Drum Lesson Providers</h2>
+
+
+<?php
  
-if ( $allPostsWPQuery->have_posts() ) : ?>
+if ( $onlineDrumLessonsWPQuery->have_posts() ) : ?>
  
 <ul>
-     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+     <?php while ( $onlineDrumLessonsWPQuery->have_posts() ) : $onlineDrumLessonsWPQuery->the_post(); ?>
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
         <ul>
@@ -66,23 +104,13 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
 <h2>Drum Software/Games</h2>
 
+
 <?php
-
-$allPostsWPQuery = new WP_Query(
-    [
-        'order' => 'ASC',
-        'orderby' => 'title',
-        'post_type'=> 'post',
-        'post_status'=> 'publish',
-        'posts_per_page'=> -1,
-        'category_name'=> 'drum-games',
-
-    ]);
  
-if ( $allPostsWPQuery->have_posts() ) : ?>
+if ( $drumSoftwareWPQuery->have_posts() ) : ?>
  
 <ul>
-     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+     <?php while ( $drumSoftwareWPQuery->have_posts() ) : $drumSoftwareWPQuery->the_post(); ?>
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
         <ul>
@@ -111,22 +139,11 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 <h2>Positive Vibes Drum Stories</h2>
 
 <?php
-
-$allPostsWPQuery = new WP_Query(
-    [
-        'order' => 'ASC',
-        'orderby' => 'title',
-        'post_type'=> 'post',
-        'post_status'=> 'publish',
-        'posts_per_page'=> -1,
-        'category_name'=> 'positive-vibes',
-
-    ]);
  
-if ( $allPostsWPQuery->have_posts() ) : ?>
+if ( $positiveVibesWPQuery->have_posts() ) : ?>
  
 <ul>
-     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+     <?php while ( $positiveVibesWPQuery->have_posts() ) : $positiveVibesWPQuery->the_post(); ?>
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php endwhile; ?>
@@ -140,21 +157,11 @@ if ( $allPostsWPQuery->have_posts() ) : ?>
 
 <?php
 
-$allPostsWPQuery = new WP_Query(
-    [
-        'order' => 'ASC',
-        'orderby' => 'title',
-        'post_type'=> 'post',
-        'post_status'=> 'publish',
-        'posts_per_page'=> -1,
-        'category_name'=> 'drummer-assistance',
-
-    ]);
  
-if ( $allPostsWPQuery->have_posts() ) : ?>
+if ( $assistanceWPQuery->have_posts() ) : ?>
  
 <ul>
-     <?php while ( $allPostsWPQuery->have_posts() ) : $allPostsWPQuery->the_post(); ?>
+     <?php while ( $assistanceWPQuery->have_posts() ) : $assistanceWPQuery->the_post(); ?>
         <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php endwhile; ?>
