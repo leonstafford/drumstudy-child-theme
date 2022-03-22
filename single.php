@@ -2,7 +2,7 @@
 /**
  * The single post template file
  *
- * @package AccessibleMinimalism
+ * @package DrumChildTheme
  */
 
 get_header();
